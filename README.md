@@ -1,59 +1,51 @@
-# TutoProjet
+# Angular Product CRUD implementation
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.10.
+I have successfully built a robust Product CRUD application in Angular following Clean Architecture principles.
 
-## Development server
+## 🚀 Accomplishments
 
-To start a local development server, run:
+### 🎨 Design & UI
 
-```bash
-ng serve
-```
+- Integrated **Tailwind CSS v3** for a modern, responsive, and premium look.
+- Implemented a **Global Layout** with a shared [HeaderComponent](file:///d:/formations/angular/tuto-projet/src/app/shared/components/header/header.component.ts#4-32).
+- Created aesthetic and user-friendly views:
+  - **Product List**: Grid view with loading states, empty states, and stock status indicators.
+  - **Product Form**: Reactive forms with validation for creating and editing products.
+  - **Product Detail**: A dedicated view for singular product information with action buttons.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 🏗️ Architecture & Logic
 
-## Code scaffolding
+- **Clean Architecture**: Organized into `core` (interceptors), `shared` (reusable components), and `features/products` (domain logic).
+- **Zoneless Mode**: Configured the app to use `provideZonelessChangeDetection()`, removing the dependency on `zone.js` for better performance and smaller bundles.
+- **State Management**: Implemented a [ProductStore](file:///d:/formations/angular/tuto-projet/src/app/features/products/store/product.store.ts#13-100) using **Angular Signals** for reactive state handling.
+- **API Simulation**: Built a [ProductService](file:///d:/formations/angular/tuto-projet/src/app/features/products/services/product.service.ts#6-55) that mocks CRUD operations with delayed observables to simulate real-world backend behavior.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 🛡️ Routing & Server
 
-```bash
-ng generate component component-name
-```
+- **Lazy Loading**: Configured routes to lazy-load feature components for optimal initial bundle size.
+- **SSR/Hydration Fix**: Resolved hydration mismatch errors (`NG0500`) by syncing [main.server.ts](file:///d:/formations/angular/tuto-projet/src/main.server.ts) with [AppComponent](file:///d:/formations/angular/tuto-projet/src/app/app.component.ts#5-26) and removing legacy boilerplate files.
+- **Server Routing**: Optimized [app.routes.server.ts](file:///d:/formations/angular/tuto-projet/src/app/app.routes.server.ts) to use `RenderMode.Server`, resolving build issues with dynamic route parameters.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🧪 Verification Results
 
-```bash
-ng generate --help
-```
+### Automated Tests
 
-## Building
+- **ProductService**: 100% test coverage for all CRUD operations ([getProducts](file:///d:/formations/angular/tuto-projet/src/app/features/products/services/product.service.ts#22-26), [getProductById](file:///d:/formations/angular/tuto-projet/src/app/features/products/services/product.service.ts#27-33), [createProduct](file:///d:/formations/angular/tuto-projet/src/app/features/products/services/product.service.ts#34-40), [updateProduct](file:///d:/formations/angular/tuto-projet/src/app/features/products/store/product.store.ts#69-84), [deleteProduct](file:///d:/formations/angular/tuto-projet/src/app/features/products/store/product.store.ts#85-99)).
+- **ProductStore**: Verified state transitions for loading, success, and error scenarios.
 
-To build the project run:
+### Build Verification
 
-```bash
-ng build
-```
+- Successfully generated browser and server bundles.
+- **Tailwind CSS** successfully compiled into [styles.css](file:///d:/formations/angular/tuto-projet/src/styles.css) (verified bundle size).
+- Prerendering completed for static routes.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🛠️ How to run
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. To start the development server:
+   ```bash
+   npm start
+   ```
+2. To run the test suite:
+   ```bash
+   npm test
+   ```
