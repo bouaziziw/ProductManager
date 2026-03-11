@@ -1,0 +1,31 @@
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-header',
+  standalone: true,
+  imports: [RouterLink],
+  template: `
+    <header class="bg-blue-600 text-white shadow-md">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a routerLink="/" class="text-2xl font-bold tracking-wider hover:text-blue-100 transition-colors">ProductManager</a>
+        <nav>
+          <ul class="flex space-x-6 items-center">
+            <li>
+              <a routerLink="/products" class="py-2 hover:text-blue-200 transition-colors duration-200 font-medium">
+                Products
+              </a>
+            </li>
+            <li>
+              <a routerLink="/products/new" class="bg-white text-blue-600 px-4 py-2 rounded-md font-semibold hover:bg-blue-50 transition-colors duration-200 shadow-sm">
+                Add Product
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  `,
+  styles: ``
+})
+export class HeaderComponent { }
